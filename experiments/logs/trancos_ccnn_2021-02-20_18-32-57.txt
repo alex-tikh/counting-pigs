@@ -1,0 +1,6 @@
+Logging output to experiments/logs/trancos_ccnn_2021-02-20_18-32-57.txt
+  File "src/test.py", line 266
+    print "======================================================"
+                                                                 ^
+SyntaxError: Missing parentheses in call to 'print'. Did you mean print("======================================================")?
+Time in seconds: 0

@@ -186,7 +186,7 @@ def gameMetric(test, gt, lvl):
 #===========================================================================
 # Some helpers functions
 #===========================================================================
-def testOnImg(CNN, im, gtdots, pw, mask = None):
+def testOnImg(CNN, im, gtdots=None, pw=None, mask = None):
     
     # Process Image
     resImg = CNN.process(im, pw) 
@@ -212,7 +212,8 @@ def testOnImg(CNN, im, gtdots, pw, mask = None):
     plt.title(resImg.sum())
     plt.show()
     npred=resImg.sum()
-    ntrue=gtdots.sum()
+    #ntrue=gtdots.sum()
+    ntrue = 0
 
     return ntrue,npred,resImg,gtdots
 
@@ -275,8 +276,8 @@ def dispHelp(arg0):
 
 def main(argv):
     # Init parameters      
-    use_cpu = False
-    gpu_dev = 0
+    use_cpu = True
+    gpu_dev = 1
 
     # GAME max level
     mx_game = 4 # Max game target
@@ -397,20 +398,20 @@ def main(argv):
 
         # Read image files
         im = loadImage(im_path, color = is_colored) 
-        dot_im = loadImage(dot_im_path, color = True)
+        #dot_im = loadImage(dot_im_path, color = True)
         
         # Generate features
-        if use_perspective:
-            dens_im = genPDensity(dot_im, sigmadots, pmap)
-        else:
-            dens_im = genDensity(dot_im, sigmadots)
+        #if use_perspective:
+        #    dens_im = genPDensity(dot_im, sigmadots, pmap)
+        #else:
+        #    dens_im = genDensity(dot_im, sigmadots)
         
         if resize_im > 0:
             # Resize image
             im = utl.resizeMaxSize(im, resize_im)
-            gt_sum = dens_im.sum()
-            dens_im = utl.resizeMaxSize(dens_im, resize_im)
-            dens_im = dens_im * gt_sum / dens_im.sum()
+        #    gt_sum = dens_im.sum()
+        #    dens_im = utl.resizeMaxSize(dens_im, resize_im)
+        #    dens_im = dens_im * gt_sum / dens_im.sum()
         
         # Get mask if needed
         # if dataset != 'UCSD':
@@ -420,6 +421,7 @@ def main(argv):
         #         mask = mask.get('BW')
         
         s=time.time()
+        dens_im = None
         ntrue,npred,resImg,gtdots=testOnImg(CNN, im, dens_im, pw)
         print "image :%s, ntrue = %.2f ,npred = %.2f , time =%.2f sec"%(im_path,ntrue,npred,time.time()-s)
     

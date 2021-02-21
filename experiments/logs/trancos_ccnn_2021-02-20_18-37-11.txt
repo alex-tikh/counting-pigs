@@ -1,0 +1,8 @@
+Logging output to experiments/logs/trancos_ccnn_2021-02-20_18-37-11.txt
+Traceback (most recent call last):
+  File "src/test.py", line 38, in <module>
+    import utils as utl
+  File "/home/alexander/dymov_pig_counting/counting-pigs/src/utils.py", line 3, in <module>
+    import vigra
+ImportError: No module named vigra
+Time in seconds: 2

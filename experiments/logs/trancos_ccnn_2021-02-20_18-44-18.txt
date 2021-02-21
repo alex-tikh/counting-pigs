@@ -1,0 +1,43 @@
+Logging output to experiments/logs/trancos_ccnn_2021-02-20_18-44-18.txt
+Loading configuration file:  models/trancos/ccnn/ccnn_trancos_cfg.yml
+/home/alexander/dymov_pig_counting/counting-pigs/src/utils.py:34: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Choosen parameters:
+-------------------
+Use only CPU:  False
+GPU devide:  0
+Dataset:  TRANCOS
+Results files:  genfiles/results/ccnn_trancos
+Test data base location:  ./counting/datasets/images/
+Test inmage names:  ./counting/datasets/image_set/demo.txt
+Dot image ending:  dots.png
+Use mask:  True
+Mask pattern:  mask.mat
+Patch width (pw):  140
+Sigma for each dot:  15.0
+Number of scales:  1
+Perspective map:  
+Use perspective: False
+Prototxt path:  models/trancos/ccnn/ccnn_deploy.prototxt
+Caffemodel path:  ours_scale/ccnn_trancos_iter.caffemodel
+Batch size:  -1
+Resize images:  -1
+===================
+----------------------
+Preparing for Testing
+======================
+Reading perspective file
+Reading image file names:
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W0220 18:44:19.282292 55254 _caffe.cpp:139] DEPRECATION WARNING - deprecated use of Python interface
+W0220 18:44:19.282307 55254 _caffe.cpp:140] Use this instead (with the named "weights" parameter):
+W0220 18:44:19.282310 55254 _caffe.cpp:142] Net('models/trancos/ccnn/ccnn_deploy.prototxt', 1, weights='ours_scale/ccnn_trancos_iter.caffemodel')
+Traceback (most recent call last):
+  File "src/test.py", line 457, in <module>
+    main(sys.argv[1:])
+  File "src/test.py", line 385, in main
+    CNN = CaffePredictor(prototxt_path, caffemodel_path, n_scales)
+  File "src/test.py", line 52, in __init__
+    self.net = caffe.Net(prototxt, caffemodel, caffe.TEST)
+RuntimeError: Could not open file ours_scale/ccnn_trancos_iter.caffemodel
+Time in seconds: 1

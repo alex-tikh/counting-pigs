@@ -1,0 +1,13 @@
+Logging output to experiments/logs/trancos_ccnn_2021-02-20_18-38-51.txt
+Loading configuration file:  models/trancos/ccnn/ccnn_trancos_cfg.yml
+Traceback (most recent call last):
+  File "src/test.py", line 457, in <module>
+    main(sys.argv[1:])
+  File "src/test.py", line 323, in main
+    use_perspective, is_colored, results_file, resize_im) = initTestFromCfg(cfg_file)
+  File "src/test.py", line 225, in initTestFromCfg
+    cfg = utl.cfgFromFile(cfg_file)
+  File "/home/alexander/dymov_pig_counting/counting-pigs/src/utils.py", line 32, in cfgFromFile
+    from easydict import EasyDict as edict
+ImportError: No module named easydict
+Time in seconds: 1
